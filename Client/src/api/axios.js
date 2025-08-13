@@ -1,7 +1,8 @@
 import axios from "axios";
 
-const instance = axios.create({
-  baseURL: "http://localhost:5000/api",
+const api = axios.create({
+  baseURL: "https://khetbazaar-middlemanfreemandiplatform.onrender.com", // ✅ your new API URL
+  withCredentials: true,
 });
 
-export default instance;
+export default api;

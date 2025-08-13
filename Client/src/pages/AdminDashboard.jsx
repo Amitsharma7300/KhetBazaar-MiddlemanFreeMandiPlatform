@@ -12,7 +12,7 @@ import {
   Tooltip,
   XAxis, YAxis
 } from "recharts";
-import axios from "../api/axios";
+import api from "../api/axios";
 import { useAuth } from "../context/AuthContext";
 
 export default function AdminDashboard() {
@@ -28,11 +28,11 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchData = async () => {
       const [usersRes, cropsRes, analyticsRes, locationRes, typeRes] = await Promise.all([
-        axios.get("/admin/users", { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get("/admin/crops", { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get("/admin/analytics", { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get("/admin/location-analytics", { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get("/admin/type-analytics", { headers: { Authorization: `Bearer ${token}` } }),
+        api.get("/admin/users", { headers: { Authorization: `Bearer ${token}` } }),
+        api.get("/admin/crops", { headers: { Authorization: `Bearer ${token}` } }),
+        api.get("/admin/analytics", { headers: { Authorization: `Bearer ${token}` } }),
+        api.get("/admin/location-analytics", { headers: { Authorization: `Bearer ${token}` } }),
+        api.get("/admin/type-analytics", { headers: { Authorization: `Bearer ${token}` } }),
       ]);
       setUsers(usersRes.data);
       setCrops(cropsRes.data);
@@ -51,17 +51,17 @@ export default function AdminDashboard() {
   }, [token]);
 
   const handleBlockUser = async (id) => {
-    await axios.patch(`/admin/users/${id}/block`, {}, { headers: { Authorization: `Bearer ${token}` } });
+    await api.patch(`/admin/users/${id}/block`, {}, { headers: { Authorization: `Bearer ${token}` } });
     setUsers(users => users.map(u => u._id === id ? { ...u, blocked: true } : u));
   };
 
   const handleUnblockUser = async (id) => {
-    await axios.patch(`/admin/users/${id}/unblock`, {}, { headers: { Authorization: `Bearer ${token}` } });
+    await api.patch(`/admin/users/${id}/unblock`, {}, { headers: { Authorization: `Bearer ${token}` } });
     setUsers(users => users.map(u => u._id === id ? { ...u, blocked: false } : u));
   };
 
   const handleBlockCrop = async (id) => {
-    await axios.patch(`/admin/crops/${id}/block`, {}, { headers: { Authorization: `Bearer ${token}` } });
+    await api.patch(`/admin/crops/${id}/block`, {}, { headers: { Authorization: `Bearer ${token}` } });
     setCrops(crops => crops.map(c => c._id === id ? { ...c, status: "blocked" } : c));
   };
 

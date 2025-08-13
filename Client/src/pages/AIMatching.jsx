@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "../api/axios";
+import api from "../api/axios";
 import { useAuth } from "../context/AuthContext";
 
 export default function AIMatching() {
@@ -9,7 +9,7 @@ export default function AIMatching() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post("/match", form, { headers: { Authorization: `Bearer ${token}` } });
+    const res = await api.post("/match", form, { headers: { Authorization: `Bearer ${token}` } });
     setMatches(res.data);
   };
 

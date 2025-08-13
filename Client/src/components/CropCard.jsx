@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "../api/axios";
+import api from "../api/axios";
 import { useAuth } from "../context/AuthContext";
 import LogisticsForm from "./LogisticsForm";
 
@@ -24,7 +24,7 @@ export default function CropCard({ crop, dashboardType, isBuyer, onBidAction }) 
   const handleBidAction = async (bidId, action) => {
     setActionLoading(bidId + action);
     try {
-      await axios.post(
+      await api.post(
         `/crops/${crop._id}/bids/${bidId}/${action}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
@@ -42,7 +42,7 @@ export default function CropCard({ crop, dashboardType, isBuyer, onBidAction }) 
     setLoading(true);
     setError("");
     try {
-      await axios.post(
+      await api.post(
         `/crops/${crop._id}/bid`,
         { amount: bidAmount },
         { headers: { Authorization: `Bearer ${token}` } }

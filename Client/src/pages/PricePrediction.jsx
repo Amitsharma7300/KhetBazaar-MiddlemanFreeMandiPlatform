@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api/axios";
 import { useState } from "react";
 import { GiWheat } from "react-icons/gi";
 
@@ -15,7 +15,7 @@ export default function CropPrices() {
   const fetchPrices = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/api/price-prediction", {
+      const res = await api.get("/api/price-prediction", {
         params: {
           state: state || undefined,
           district: district || undefined,

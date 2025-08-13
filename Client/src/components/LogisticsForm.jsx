@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaCalendarAlt, FaMapMarkerAlt, FaMoneyBillWave, FaPhone, FaUser } from "react-icons/fa";
-import axios from "../api/axios";
+import api from "../api/axios";
 import { useAuth } from "../context/AuthContext";
 
 export default function LogisticsForm({ crop, bid, onBooked }) {
@@ -21,7 +21,7 @@ export default function LogisticsForm({ crop, bid, onBooked }) {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.post(
+      const res = await api.post(
         "/logistics/book",
         {
           cropId: crop._id,

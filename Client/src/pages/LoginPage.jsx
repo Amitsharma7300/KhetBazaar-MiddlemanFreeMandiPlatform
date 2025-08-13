@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api/axios"; // ✅ updated import path
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
@@ -17,7 +17,7 @@ export default function LoginPage() {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", form);
+      const res = await api.post("/api/auth/login", form);
       login(res.data.user, res.data.token);
       navigate(`/${res.data.user.role}`);
     } catch (err) {

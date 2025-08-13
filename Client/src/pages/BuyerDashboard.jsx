@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaHandshake, FaSearchDollar } from "react-icons/fa";
 import { GiPriceTag } from "react-icons/gi";
-import axios from "../api/axios";
+import api from "../api/axios";
 import CropCard from "../components/CropCard";
 import { useAuth } from "../context/AuthContext";
 import AIMatching from "./AIMatching";
@@ -15,7 +15,7 @@ export default function BuyerDashboard() {
 
   useEffect(() => {
     const fetchCrops = async () => {
-      const res = await axios.get("/crops", {
+      const res = await api.get("/crops", {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCrops(res.data);

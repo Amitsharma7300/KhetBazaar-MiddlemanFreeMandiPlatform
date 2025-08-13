@@ -1,7 +1,8 @@
-import axios from "axios";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import api from "../api/axios";
 import {
   FiUser,
   FiMail,
@@ -59,7 +60,7 @@ export default function RegisterPage() {
     setLoading(true);
     setError("");
     try {
-      await axios.post("http://localhost:5000/api/auth/register", form);
+      await api.post("/api/auth/register", form);
       setOtpSent(true); 
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
@@ -73,7 +74,7 @@ export default function RegisterPage() {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/verify-otp", {
+      const res = await api.post("/api/auth/verify-otp", {
         email: form.email,
         otp,
       });

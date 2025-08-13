@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "../api/axios";
+import api from "../api/axios";
 import { useAuth } from "../context/AuthContext";
 import {
   FaSeedling,
@@ -54,7 +54,7 @@ export default function AddCropPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("/crops", form, {
+    await api.post("/crops", form, {
       headers: { Authorization: `Bearer ${token}` },
     });
     navigate("/farmer");

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "../api/axios";
+import api from "../api/axios";
 import { useAuth } from "../context/AuthContext";
 
 export default function ContractOffers() {
@@ -8,7 +8,7 @@ export default function ContractOffers() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("/contracts", { headers: { Authorization: `Bearer ${token}` } })
+    api.get("/contracts", { headers: { Authorization: `Bearer ${token}` } })
       .then(res => {
         setContracts(res.data);
         setLoading(false);

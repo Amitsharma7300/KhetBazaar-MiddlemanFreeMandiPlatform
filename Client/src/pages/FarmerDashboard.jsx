@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaSeedling } from "react-icons/fa";
 import { GiFarmer, GiPlantRoots } from "react-icons/gi";
-import axios from "../api/axios";
+import api from "../api/axios";
 import CropCard from "../components/CropCard";
 import { useAuth } from "../context/AuthContext";
 import AIMatching from "./AIMatching";
@@ -17,7 +17,7 @@ export default function FarmerDashboard() {
 
   const fetchCrops = async () => {
     try {
-      const res = await axios.get("/crops", {
+      const res = await api.get("/crops", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCrops(res.data);
