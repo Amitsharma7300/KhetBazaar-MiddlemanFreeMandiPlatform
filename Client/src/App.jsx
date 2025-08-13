@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import Footer from "./components/Footer";
+
 import Navbar from "./components/Navbar";
 import { useAuth } from "./context/AuthContext";
 import About from "./pages/About";
@@ -13,6 +13,8 @@ import RegisterPage from "./pages/RegisterPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import PrivacyPolicy from "./pages/Privacy&policy";
 import Blog from "./pages/Blog";
+
+import Footer from "./components/Footer";
 function App() {
   const { user } = useAuth();
   const location = useLocation();
