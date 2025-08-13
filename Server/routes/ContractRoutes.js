@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const Contract = require("../models/Contract");
+
 const Bid = require("../models/Bid");
 const { protect } = require("../middleware/authMiddleware");
+const contract = require("../models/contract");
 
 router.get("/contracts", protect, async (req, res) => {
   // Find contracts where the bid is accepted
-  const contracts = await Contract.find()
+  const contracts = await contract.find()
     .populate("farmer buyer bid crop")
     .lean();
 
