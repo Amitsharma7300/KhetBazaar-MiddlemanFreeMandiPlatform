@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.clip-corner {
+  clip-path: polygon(100% 0, 100% 30%, 70% 0);
+}
