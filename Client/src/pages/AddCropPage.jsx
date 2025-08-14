@@ -70,7 +70,7 @@ export default function AddCropPage() {
     }
 
     try {
-      await api.post("/crops", form, {
+      await api.post("/api/crops", form, {
         headers: { Authorization: `Bearer ${token}` },
       });
       navigate("/farmer");
