@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Background Circle with Gradient -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4CAF50"></stop>
+      <stop offset="100%" stop-color="#2E7D32"></stop>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="32" fill="url(#bgGrad)"></circle>
+
+  <!-- Letter K -->
+  <text x="32" y="42" text-anchor="middle" font-size="28" font-weight="bold" fill="#fff" font-family="Poppins, sans-serif">K</text>
+
+  <!-- Stylized Leaf -->
+  <path d="M36 16 C35 12, 41 12, 36 20 C37 18, 35 18, 36 16 Z" fill="#FFEB3B" stroke="#FBC02D" stroke-width="1"></path>
+
+  <!-- Optional small shadow for depth -->
+  <circle cx="32" cy="32" r="32" fill="black" opacity="0.05"></circle>
+</svg>
