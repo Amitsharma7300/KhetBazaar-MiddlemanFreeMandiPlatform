@@ -7,7 +7,25 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
+
+// ✅ Allowed origins for both local & deployed frontend
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://khetbazaar-middleman-free-mandi-pla.vercel.app"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, Postman)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true // ✅ allow cookies/auth headers
+}));
+
 app.use(express.json());
 
 // Routes
