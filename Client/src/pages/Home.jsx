@@ -1,19 +1,10 @@
 import { ArrowRight, ShoppingBag, Users, Truck, Leaf } from "lucide-react";
 import { Link } from "react-router-dom";
 import React from "react";
-import Meta from "../components/Meta"; // ✅ Import Meta component
 
 export default function Home() {
   return (
     <div className="bg-gradient-to-b from-green-50 via-white to-green-100 text-gray-800">
-      {/* Meta tags for SEO */}
-      <Meta
-        title="KhetBazaar | Middleman-Free Mandi Platform"
-        description="Connecting farmers directly to buyers — hotels, processors, exporters — for fair prices, no middlemen, and transparent bulk crop deals."
-        image="https://images.unsplash.com/photo-1606788075761-977d78c8792b?auto=format&fit=crop&w=1400&q=80"
-        url="https://khetbazaar.vercel.app/"
-      />
-
       {/* Hero Section */}
       <section
         className="relative overflow-hidden py-10 text-center text-white w-full"
