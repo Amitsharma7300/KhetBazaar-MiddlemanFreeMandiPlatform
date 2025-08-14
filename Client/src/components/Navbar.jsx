@@ -56,3 +56,70 @@ export default function Navbar() {
     </nav>
   );
 }
+
+function NavLinks({ user, logout, closeMenu }) {
+  const linkStyle = ({ isActive }) =>
+    `font-medium transition-colors duration-200 ${
+      isActive
+        ? "text-green-600 border-b-2 border-green-600"
+        : "text-green-800 hover:text-green-600"
+    }`;
+
+  const btnLogin =
+    "bg-green-600 text-white font-medium px-4 py-1 rounded hover:bg-green-700 transition-colors";
+  const btnRegister =
+    "bg-green-100 text-green-800 font-medium px-4 py-1 rounded border border-green-300 hover:bg-green-200 transition-colors";
+  const btnLogout =
+    "bg-red-100 text-red-600 font-medium px-4 py-1 rounded hover:bg-red-200 transition-colors";
+
+  return (
+    <>
+      <NavLink to="/" className={linkStyle} onClick={closeMenu}>
+        Home
+      </NavLink>
+      <NavLink to="/about" className={linkStyle} onClick={closeMenu}>
+        About
+      </NavLink>
+      <NavLink to="/contact" className={linkStyle} onClick={closeMenu}>
+        Contact
+      </NavLink>
+      {/* ✅ New Blogs link */}
+      <NavLink to="/blogs" className={linkStyle} onClick={closeMenu}>
+        Blogs
+      </NavLink>
+
+      {user ? (
+        <>
+          {user.role === "farmer" && (
+            <NavLink to="/farmer" className={linkStyle} onClick={closeMenu}>
+              Dashboard
+            </NavLink>
+          )}
+          {user.role === "buyer" && (
+            <NavLink to="/buyer" className={linkStyle} onClick={closeMenu}>
+              Dashboard
+            </NavLink>
+          )}
+          <button
+            onClick={() => {
+              logout();
+              closeMenu();
+            }}
+            className={btnLogout}
+          >
+            Logout
+          </button>
+        </>
+      ) : (
+        <>
+          <NavLink to="/login" className={btnLogin} onClick={closeMenu}>
+            Login
+          </NavLink>
+          <NavLink to="/register" className={btnRegister} onClick={closeMenu}>
+            Register
+          </NavLink>
+        </>
+      )}
+    </>
+  );
+}
