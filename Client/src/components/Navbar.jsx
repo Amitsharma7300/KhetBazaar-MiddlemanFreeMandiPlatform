@@ -56,12 +56,11 @@ export default function Navbar() {
     </nav>
   );
 }
-
 function NavLinks({ user, logout, closeMenu }) {
   const linkStyle = ({ isActive }) =>
-    `font-medium transition-colors duration-200 ${
+    `font-medium transition-all duration-200 px-3 py-1 ${
       isActive
-        ? "text-green-600 border-b-2 border-green-600"
+        ? "text-white bg-green-600 rounded-full shadow-md"
         : "text-green-800 hover:text-green-600"
     }`;
 
@@ -83,7 +82,6 @@ function NavLinks({ user, logout, closeMenu }) {
       <NavLink to="/contact" className={linkStyle} onClick={closeMenu}>
         Contact
       </NavLink>
-      {/* ✅ New Blogs link */}
       <NavLink to="/blogs" className={linkStyle} onClick={closeMenu}>
         Blogs
       </NavLink>
