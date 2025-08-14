@@ -15,7 +15,7 @@ export default function BuyerDashboard() {
 
   useEffect(() => {
     const fetchCrops = async () => {
-      const res = await api.get("/crops", {
+      const res = await api.get("/api/crops", {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCrops(res.data);

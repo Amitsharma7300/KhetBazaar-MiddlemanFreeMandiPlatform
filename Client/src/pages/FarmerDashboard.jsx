@@ -17,7 +17,7 @@ export default function FarmerDashboard() {
 
   const fetchCrops = async () => {
     try {
-      const res = await api.get("/crops", {
+      const res = await api.get("/api/crops", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCrops(res.data);

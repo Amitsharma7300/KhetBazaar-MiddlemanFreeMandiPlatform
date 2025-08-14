@@ -25,7 +25,7 @@ export default function CropCard({ crop, dashboardType, isBuyer, onBidAction }) 
     setActionLoading(bidId + action);
     try {
       await api.post(
-        `/crops/${crop._id}/bids/${bidId}/${action}`,
+        `/api/crops/${crop._id}/bids/${bidId}/${action}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -43,7 +43,7 @@ export default function CropCard({ crop, dashboardType, isBuyer, onBidAction }) 
     setError("");
     try {
       await api.post(
-        `/crops/${crop._id}/bid`,
+        `/api/crops/${crop._id}/bid`,
         { amount: bidAmount },
         { headers: { Authorization: `Bearer ${token}` } }
       );

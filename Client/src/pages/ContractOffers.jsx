@@ -8,7 +8,7 @@ export default function ContractOffers() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.get("/contracts", { headers: { Authorization: `Bearer ${token}` } })
+    api.get("/api/contracts", { headers: { Authorization: `Bearer ${token}` } })
       .then(res => {
         setContracts(res.data);
         setLoading(false);
