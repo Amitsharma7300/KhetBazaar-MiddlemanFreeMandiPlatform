@@ -41,23 +41,43 @@ export default function AddCropPage() {
     image: "",
   });
 
+  const [error, setError] = useState("");
   const { token } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
     setForm((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]:
+        type === "checkbox"
+          ? checked
+          : type === "number" && value === ""
+          ? "" // Allow empty string for controlled number inputs
+          : value,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await api.post("/crops", form, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    navigate("/farmer");
+    setError("");
+
+    // Basic validation
+    if (!form.title || !form.cropType || !form.quantity || !form.price) {
+      setError("Please fill in all required fields.");
+      return;
+    }
+
+    try {
+      await api.post("/crops", form, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      navigate("/farmer");
+    } catch (err) {
+      console.error("Failed to add crop:", err);
+      setError(err.response?.data?.message || "Failed to add crop. Please try again.");
+    }
   };
 
   const Section = ({ icon, title, children }) => (
@@ -83,10 +103,7 @@ export default function AddCropPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-100 py-10 px-4">
-      <form
-        onSubmit={handleSubmit}
-        className="max-w-5xl mx-auto space-y-8"
-      >
+      <form onSubmit={handleSubmit} className="max-w-5xl mx-auto space-y-8">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-emerald-900 flex items-center justify-center gap-2">
             <FaSeedling /> Add New Crop
@@ -94,6 +111,7 @@ export default function AddCropPage() {
           <p className="text-emerald-600 mt-1">
             Provide detailed information to attract the best buyers
           </p>
+          {error && <p className="text-red-600 mt-2">{error}</p>}
         </div>
 
         {/* Basic Details */}
