@@ -1,13 +1,16 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import { AuthProvider } from "./context/AuthContext"; // <-- import your provider
+import { AuthProvider } from "./context/AuthContext"; 
+import { HelmetProvider } from "react-helmet-async"; // ✅ Import HelmetProvider
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
-  </BrowserRouter>
+  <HelmetProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </BrowserRouter>
+  </HelmetProvider>
 );

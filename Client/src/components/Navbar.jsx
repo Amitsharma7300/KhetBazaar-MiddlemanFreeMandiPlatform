@@ -10,7 +10,7 @@ export default function Navbar() {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <nav className="bg-white shadow-md px-6 py-3 flex items-center justify-between border-b border-green-200">
+    <nav className="bg-white shadow-md px-6 py-3 flex items-center justify-between border-b border-green-200 fixed w-full z-50">
       {/* Logo */}
       <NavLink to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
         <span className="text-3xl">🌾</span>
@@ -27,6 +27,7 @@ export default function Navbar() {
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="text-green-800 text-2xl focus:outline-none"
+          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
           {isMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
@@ -41,7 +42,7 @@ export default function Navbar() {
       ></div>
 
       {/* Mobile Slide Menu */}
-      <div
+      <aside
         className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
@@ -49,15 +50,17 @@ export default function Navbar() {
         <div className="flex flex-col p-6 gap-6">
           <NavLinks user={user} logout={logout} closeMenu={closeMenu} />
         </div>
-      </div>
+      </aside>
     </nav>
   );
 }
 
 function NavLinks({ user, logout, closeMenu }) {
   const linkStyle = ({ isActive }) =>
-    `font-medium transition-colors duration-200 ${
-      isActive ? "text-green-600 border-b-2 border-green-600" : "text-green-800 hover:text-green-600"
+    `font-medium transition-all duration-200 ${
+      isActive
+        ? "text-green-600 border-b-2 border-green-600"
+        : "text-green-800 hover:text-green-600 hover:shadow-md px-1"
     }`;
 
   const btnLogin =
@@ -78,23 +81,19 @@ function NavLinks({ user, logout, closeMenu }) {
       <NavLink to="/contact" className={linkStyle} onClick={closeMenu}>
         Contact
       </NavLink>
-      {/* ✅ New Blogs link */}
       <NavLink to="/blogs" className={linkStyle} onClick={closeMenu}>
         Blogs
       </NavLink>
 
       {user ? (
         <>
-          {user.role === "farmer" && (
-            <NavLink to="/farmer" className={linkStyle} onClick={closeMenu}>
-              Dashboard
-            </NavLink>
-          )}
-          {user.role === "buyer" && (
-            <NavLink to="/buyer" className={linkStyle} onClick={closeMenu}>
-              Dashboard
-            </NavLink>
-          )}
+          <NavLink
+            to={`/${user.role}`}
+            className={linkStyle}
+            onClick={closeMenu}
+          >
+            Dashboard
+          </NavLink>
           <button
             onClick={() => {
               logout();

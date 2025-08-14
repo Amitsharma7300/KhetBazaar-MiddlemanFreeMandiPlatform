@@ -1,10 +1,23 @@
 import { ArrowRight, ShoppingBag, Users, Truck, Leaf } from "lucide-react";
 import { Link } from "react-router-dom";
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 export default function Home() {
   return (
     <div className="bg-gradient-to-b from-green-50 via-white to-green-100 text-gray-800">
+      <Helmet>
+        <title>KhetBazaar | Middleman-Free Mandi Platform for Farmers & Buyers</title>
+        <meta
+          name="description"
+          content="KhetBazaar connects farmers directly with verified buyers for fair prices, no middlemen, and transparent bulk crop deals. Join the mandi revolution today."
+        />
+        <meta
+          name="keywords"
+          content="farmers marketplace, buy crops online, sell produce direct, mandi platform, agriculture deals, contract farming"
+        />
+      </Helmet>
+
       {/* Hero Section */}
       <section
         className="relative overflow-hidden py-10 text-center text-white w-full"
@@ -32,8 +45,7 @@ export default function Home() {
           </h1>
           <p className="mt-3 text-base sm:text-lg text-green-100 animate-fadeInUp delay-150">
             Connecting farmers directly to buyers — hotels, processors, exporters — for fair
-            prices, no middlemen, and transparent bulk crop deals. Empowering farmers with
-            technology to ensure transparency, timely payments, and access to a wider market.
+            prices, no middlemen, and transparent bulk crop deals.
           </p>
           <div className="mt-8 flex justify-center gap-6 flex-wrap animate-fadeInUp delay-300">
             <Link
@@ -55,7 +67,7 @@ export default function Home() {
       {/* Features */}
       <section className="py-16 px-6" aria-labelledby="why-choose-us">
         <h2 id="why-choose-us" className="text-3xl font-bold text-center text-green-700">
-          Why Choose Us?
+          Why Choose KhetBazaar?
         </h2>
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
           <FeatureCard
