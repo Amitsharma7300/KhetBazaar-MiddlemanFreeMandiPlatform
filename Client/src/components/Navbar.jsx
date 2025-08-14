@@ -10,7 +10,7 @@ export default function Navbar() {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <nav className="bg-white shadow-md px-6 py-3 flex items-center justify-between border-b border-green-200 fixed w-full z-50">
+    <nav className="bg-white shadow-md px-6 py-2 flex items-center justify-between border-b border-green-200 fixed w-full z-50">
       {/* Logo */}
       <NavLink to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
         <span className="text-3xl">🌾</span>
@@ -47,7 +47,7 @@ export default function Navbar() {
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex flex-col p-6 gap-6">
+        <div className="flex flex-col p-4 gap-4">
           <NavLinks user={user} logout={logout} closeMenu={closeMenu} />
         </div>
       </aside>
