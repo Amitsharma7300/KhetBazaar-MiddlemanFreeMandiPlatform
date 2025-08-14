@@ -25,7 +25,7 @@ export default function Home() {
           }}
         ></div>
 
-        <div className="relative z-10 px-6">
+        <div className="relative z-10 px-6 pt-1">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-lg animate-fadeInUp">
             Middleman-Free Mandi Platform
           </h1>
