@@ -13,7 +13,8 @@ import RegisterPage from "./pages/RegisterPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import PrivacyPolicy from "./pages/Privacy&policy";
 import Blog from "./pages/Blog";
-import Footer from "./components/Footer";
+import Footer from "./components/footer";
+
 function App() {
   const { user } = useAuth();
   const location = useLocation();
