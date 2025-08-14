@@ -12,10 +12,7 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-md px-6 py-3 flex items-center justify-between border-b border-green-200">
       {/* Logo */}
-      <NavLink
-        to="/"
-        className="flex items-center gap-2 hover:opacity-80 transition-opacity"
-      >
+      <NavLink to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
         <span className="text-3xl">🌾</span>
         <h1 className="font-bold text-2xl text-green-800">KhetBazaar</h1>
       </NavLink>
@@ -60,9 +57,7 @@ export default function Navbar() {
 function NavLinks({ user, logout, closeMenu }) {
   const linkStyle = ({ isActive }) =>
     `font-medium transition-colors duration-200 ${
-      isActive
-        ? "text-green-600 border-b-2 border-green-600"
-        : "text-green-800 hover:text-green-600"
+      isActive ? "text-green-600 border-b-2 border-green-600" : "text-green-800 hover:text-green-600"
     }`;
 
   const btnLogin =
