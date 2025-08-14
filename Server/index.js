@@ -10,8 +10,8 @@ const app = express();
 
 // ✅ Allowed origins for both local & deployed frontend
 const allowedOrigins = [
- 
-  "https://khetbazaar-middleman-free-mandi-pla.vercel.app"
+  "http://localhost:3000",
+  "https://khetbazaar.vercel.app"
 ];
 
 app.use(cors({
