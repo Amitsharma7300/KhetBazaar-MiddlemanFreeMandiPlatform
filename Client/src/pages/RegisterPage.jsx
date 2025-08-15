@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -26,8 +25,8 @@ export default function RegisterPage() {
     password: "",
     role: "buyer",
   });
-  const [otp, setOtp] = useState("");           
-  const [otpSent, setOtpSent] = useState(false); 
+  const [otp, setOtp] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -54,21 +53,19 @@ export default function RegisterPage() {
     setForm({ ...form, [name]: value });
   };
 
-  // Step 1: Send OTP
   const handleSendOtp = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     try {
       await api.post("/api/auth/register", form);
-      setOtpSent(true); 
+      setOtpSent(true);
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
     }
     setLoading(false);
   };
 
-  // Step 2: Verify OTP
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -87,9 +84,10 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-green-300 via-green-100 to-white p-4">
-      <form className="w-full max-w-md bg-white/50 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-green-200/50 transform transition-all duration-300 hover:shadow-green-300">
-        <h2 className="text-3xl font-extrabold text-green-800 mb-6 text-center tracking-wider">
+    <div className="min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-green-200 via-green-50 to-white p-6">
+      <form className="w-full max-w-lg bg-white/70 backdrop-blur-lg rounded-3xl shadow-xl p-8 border border-green-200/60 transition-all duration-300 hover:shadow-green-300/60">
+        
+        <h2 className="text-4xl font-extrabold text-green-800 mb-8 text-center tracking-wider">
           🌱 Register for <span className="text-green-900">MandiFree</span>
         </h2>
 
@@ -111,22 +109,29 @@ export default function RegisterPage() {
             value={form.password}
             onChange={handleChange}
             placeholder="Password"
-            className="pl-10 pr-10 border border-green-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-all duration-200 placeholder-green-400 bg-white/70"
+            className="pl-10 pr-10 border border-green-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 placeholder-green-400 bg-white/80"
             required
           />
           {form.password.length > 0 && (
-            <button type="button" onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-3 text-green-600 hover:text-green-800">
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-3 text-green-600 hover:text-green-800 transition-colors"
+            >
               {showPassword ? <FiEyeOff /> : <FiEye />}
             </button>
           )}
         </div>
 
-        {/* Role */}
+        {/* Role Selector */}
         <div className="mb-6 relative">
           <FiUserCheck className="absolute left-3 top-3 text-green-600" />
-          <select name="role" value={form.role} onChange={handleChange}
-            className="pl-10 pr-10 border border-green-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-all duration-200 bg-white/70 appearance-none cursor-pointer">
+          <select
+            name="role"
+            value={form.role}
+            onChange={handleChange}
+            className="pl-10 pr-10 border border-green-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 bg-white/80 appearance-none cursor-pointer"
+          >
             <option value="buyer">🛒 Buyer</option>
             <option value="farmer">🌾 Farmer</option>
           </select>
@@ -135,7 +140,11 @@ export default function RegisterPage() {
 
         {/* OTP Section */}
         {!otpSent ? (
-          <button onClick={handleSendOtp} className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 rounded-lg" disabled={loading}>
+          <button
+            onClick={handleSendOtp}
+            className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 rounded-xl shadow-lg transition-transform transform hover:scale-[1.02]"
+            disabled={loading}
+          >
             {loading ? "Sending OTP..." : "Send OTP"}
           </button>
         ) : (
@@ -147,16 +156,20 @@ export default function RegisterPage() {
                 name="otp"
                 value={otp}
                 onChange={(e) => {
-                  const val = e.target.value.replace(/\D/g, ""); // digits only
+                  const val = e.target.value.replace(/\D/g, "");
                   if (val.length <= 6) setOtp(val);
                 }}
                 maxLength={6}
                 placeholder="6-digit OTP"
-                className="mx-auto text-center text-xl font-bold tracking-widest w-40 border-2 border-green-400 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 placeholder-green-400 bg-green-50 transition-all duration-200"
+                className="mx-auto text-center text-xl font-bold tracking-widest w-44 border-2 border-green-400 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 bg-green-50"
                 required
               />
             </div>
-            <button onClick={handleVerifyOtp} className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 rounded-lg shadow-md transition-all duration-200 transform hover:scale-105" disabled={loading}>
+            <button
+              onClick={handleVerifyOtp}
+              className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 rounded-xl shadow-lg transition-transform transform hover:scale-[1.02]"
+              disabled={loading}
+            >
               {loading ? "Verifying OTP..." : "Verify OTP"}
             </button>
           </div>
@@ -171,7 +184,7 @@ function InputField({ icon, placeholder, type = "text", name, value, onChange, p
     <div className="mb-4 relative">
       {icon && <span className="absolute left-3 top-3 text-green-600">{icon}</span>}
       <input
-        className="pl-10 border border-green-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-all duration-200 placeholder-green-400 bg-white/70"
+        className="pl-10 border border-green-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 placeholder-green-400 bg-white/80"
         placeholder={placeholder}
         type={type}
         name={name}
@@ -191,4 +204,4 @@ function ErrorMsg({ message }) {
       {message}
     </div>
   );
-}
+        }
