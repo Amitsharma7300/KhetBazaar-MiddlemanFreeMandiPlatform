@@ -311,7 +311,7 @@ export default function AdminDashboard() {
             
             <th className="p-4">Variety</th>
             <th className="p-4">Grade</th>
-            <th className="p-4">Quantity (kg)</th>
+            <th className="p-4">Quantity </th>
             <th className="p-4">Price / Unit</th>
             <th className="p-4">Harvest Date</th>
             <th className="p-4">Location</th>
