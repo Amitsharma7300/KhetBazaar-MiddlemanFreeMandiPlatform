@@ -33,7 +33,7 @@ export default function LoginPage() {
         className="w-full max-w-md bg-white/50 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-green-200/50 transform transition-all duration-300 hover:shadow-green-300"
       >
         <h2 className="text-3xl font-extrabold text-green-800 mb-6 text-center tracking-wider">
-          🌱 Login to <span className="text-green-900">MandiFree</span>
+          🌱 Login to <span className="text-green-900">KhetBazaar</span>
         </h2>
 
         {error && (
