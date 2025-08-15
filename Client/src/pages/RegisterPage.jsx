@@ -87,7 +87,7 @@ export default function RegisterPage() {
     <div className="min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-green-100 via-white to-green-50 p-6">
       <form className="w-full max-w-3xl bg-white/80 backdrop-blur-lg rounded-3xl shadow-lg p-8 border border-green-200/50 space-y-6">
         <h2 className="text-4xl font-bold text-green-800 text-center mb-4">
-          🌱 Register for <span className="text-green-900">MandiFree</span>
+          🌱 Register for <span className="text-green-900">KhetBazaar</span>
         </h2>
 
         {error && <ErrorMsg message={error} />}
