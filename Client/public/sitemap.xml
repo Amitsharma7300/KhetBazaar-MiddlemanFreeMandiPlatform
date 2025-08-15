@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home -->
+  <url>
+    <loc>https://khetbazaar.vercel.app/</loc>
+    <lastmod>2025-08-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- About -->
+  <url>
+    <loc>https://khetbazaar.vercel.app/about</loc>
+    <lastmod>2025-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://khetbazaar.vercel.app/contact</loc>
+    <lastmod>2025-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Blogs -->
+  <url>
+    <loc>https://khetbazaar.vercel.app/blogs</loc>
+    <lastmod>2025-08-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Farmer Dashboard -->
+  <url>
+    <loc>https://khetbazaar.vercel.app/farmer</loc>
+    <lastmod>2025-08-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Buyer Dashboard -->
+  <url>
+    <loc>https://khetbazaar.vercel.app/buyer</loc>
+    <lastmod>2025-08-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Login -->
+  <url>
+    <loc>https://khetbazaar.vercel.app/login</loc>
+    <changefreq>never</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <!-- Register -->
+  <url>
+    <loc>https://khetbazaar.vercel.app/register</loc>
+    <changefreq>never</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://khetbazaar.vercel.app/privacy-policy</loc>
+    <lastmod>2025-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Terms & Conditions -->
+  <url>
+    <loc>https://khetbazaar.vercel.app/terms</loc>
+    <lastmod>2025-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
