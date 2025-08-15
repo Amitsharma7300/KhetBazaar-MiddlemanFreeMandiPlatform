@@ -3,18 +3,9 @@ import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import { useAuth } from "../context/AuthContext";
 import {
-  FaSeedling,
-  FaRupeeSign,
-  FaMapMarkerAlt,
-  FaLeaf,
-  FaWarehouse,
-  FaCalendarAlt,
-  FaTractor,
-  FaWater,
-  FaMountain,
-  FaInfoCircle,
-  FaClipboardList,
-  FaImage,
+  FaSeedling, FaRupeeSign, FaMapMarkerAlt, FaLeaf,
+  FaWarehouse, FaCalendarAlt, FaTractor, FaWater,
+  FaMountain, FaInfoCircle, FaClipboardList, FaImage
 } from "react-icons/fa";
 
 export default function AddCropPage() {
@@ -45,17 +36,12 @@ export default function AddCropPage() {
   const { token } = useAuth();
   const navigate = useNavigate();
 
+  // ✅ Fixed handleChange — works for multiple words & numbers
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-
     setForm((prev) => ({
       ...prev,
-      [name]:
-        type === "checkbox"
-          ? checked
-          : type === "number" && value === ""
-          ? "" // Allow empty string for controlled number inputs
-          : value,
+      [name]: type === "checkbox" ? checked : value
     }));
   };
 
@@ -63,7 +49,6 @@ export default function AddCropPage() {
     e.preventDefault();
     setError("");
 
-    // Basic validation
     if (!form.title || !form.cropType || !form.quantity || !form.price) {
       setError("Please fill in all required fields.");
       return;
