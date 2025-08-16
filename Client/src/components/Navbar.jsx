@@ -10,15 +10,20 @@ export default function Navbar() {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <nav className="bg-white shadow-md px-6 py-3 flex items-center justify-between border-b border-green-200">
+    <nav className="bg-gradient-to-r from-green-50 to-green-100 shadow-md px-6 py-4 flex items-center justify-between border-b border-green-200">
       {/* Logo */}
-      <NavLink to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+      <NavLink
+        to="/"
+        className="flex items-center gap-2 hover:opacity-90 transition-all"
+      >
         <span className="text-3xl">🌾</span>
-        <h1 className="font-bold text-2xl text-green-800">KhetBazaar</h1>
+        <h1 className="font-extrabold text-2xl text-green-800 tracking-wide">
+          KhetBazaar
+        </h1>
       </NavLink>
 
       {/* Desktop Links */}
-      <div className="hidden md:flex items-center gap-6">
+      <div className="hidden md:flex items-center gap-8">
         <NavLinks user={user} logout={logout} closeMenu={closeMenu} />
       </div>
 
@@ -26,7 +31,7 @@ export default function Navbar() {
       <div className="md:hidden">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="text-green-800 text-2xl focus:outline-none"
+          className="text-green-800 text-3xl focus:outline-none hover:scale-110 transition-transform"
         >
           {isMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
@@ -42,11 +47,11 @@ export default function Navbar() {
 
       {/* Mobile Slide Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-72 bg-white shadow-xl z-50 transform transition-transform duration-300 rounded-l-2xl ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex flex-col p-6 gap-6">
+        <div className="flex flex-col p-8 gap-6">
           <NavLinks user={user} logout={logout} closeMenu={closeMenu} />
         </div>
       </div>
@@ -56,16 +61,18 @@ export default function Navbar() {
 
 function NavLinks({ user, logout, closeMenu }) {
   const linkStyle = ({ isActive }) =>
-    `font-medium transition-colors duration-200 ${
-      isActive ? "text-green-600 border-b-2 border-green-600" : "text-green-800 hover:text-green-600"
+    `relative font-semibold transition-all duration-300 pb-1 ${
+      isActive
+        ? "text-green-700 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-green-600"
+        : "text-green-900 hover:text-green-600 hover:after:w-full after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-green-600 after:transition-all"
     }`;
 
   const btnLogin =
-    "bg-green-600 text-white font-medium px-4 py-1 rounded hover:bg-green-700 transition-colors";
+    "bg-green-600 text-white font-semibold px-5 py-2 rounded-full shadow hover:bg-green-700 transition-colors";
   const btnRegister =
-    "bg-green-100 text-green-800 font-medium px-4 py-1 rounded border border-green-300 hover:bg-green-200 transition-colors";
+    "bg-white text-green-700 font-semibold px-5 py-2 rounded-full border-2 border-green-400 hover:bg-green-100 shadow transition-colors";
   const btnLogout =
-    "bg-red-100 text-red-600 font-medium px-4 py-1 rounded hover:bg-red-200 transition-colors";
+    "bg-red-50 text-red-600 font-semibold px-5 py-2 rounded-full border border-red-200 hover:bg-red-100 transition-colors";
 
   return (
     <>
@@ -78,7 +85,6 @@ function NavLinks({ user, logout, closeMenu }) {
       <NavLink to="/contact" className={linkStyle} onClick={closeMenu}>
         Contact
       </NavLink>
-      {/* ✅ New Blogs link */}
       <NavLink to="/blogs" className={linkStyle} onClick={closeMenu}>
         Blogs
       </NavLink>
@@ -106,14 +112,14 @@ function NavLinks({ user, logout, closeMenu }) {
           </button>
         </>
       ) : (
-        <>
+        <div className="flex gap-4">
           <NavLink to="/login" className={btnLogin} onClick={closeMenu}>
             Login
           </NavLink>
           <NavLink to="/register" className={btnRegister} onClick={closeMenu}>
             Register
           </NavLink>
-        </>
+        </div>
       )}
     </>
   );
