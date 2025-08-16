@@ -42,22 +42,23 @@ export default function LoginPage() {
           </div>
         )}
 
-        {/* Email */}
-        <div className="mb-4 relative">
-          <FaEnvelope className="absolute left-3 top-3 text-green-600" />
-          <input
-            className="pl-10 border border-green-300 rounded-lg px-4 py-2 w-full 
-                       focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 
-                       transition-all duration-200 placeholder-green-400 bg-white/70"
-            placeholder="Enter your email"
-            type="email"
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            required
-          />
-        </div>
+       {/* Email */}
+<div className="mb-4 relative">
+  <FaEnvelope className="absolute left-3 top-3 text-green-600" />
+  <input
+    className="pl-10 border border-green-300 rounded-lg px-4 py-2 w-full 
+               focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 
+               transition-all duration-200 placeholder-green-400 bg-white/70"
+    placeholder="Enter your email"
+    type="email"
+    autoComplete="email"  // ✅ Added
+    value={form.email}
+    onChange={(e) => setForm({ ...form, email: e.target.value })}
+    required
+  />
+</div>
 
-        {/* Password with press-to-see */}
+{/* Password with press-to-see */}
 <div className="mb-6 relative">
   <FaLock className="absolute left-3 top-3 text-green-600" />
   <input
@@ -66,11 +67,12 @@ export default function LoginPage() {
                transition-all duration-200 placeholder-green-400 bg-white/70"
     placeholder="Enter your password"
     type={showPassword ? "text" : "password"}
+    autoComplete="current-password"  // ✅ Added
     value={form.password}
     onChange={(e) => setForm({ ...form, password: e.target.value })}
     required
   />
-  
+
   {/* Show eye only if password has text */}
   {form.password.length > 0 && (
     <button
@@ -86,7 +88,6 @@ export default function LoginPage() {
     </button>
   )}
 </div>
-
 
         {/* Submit Button */}
         <button
