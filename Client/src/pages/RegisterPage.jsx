@@ -148,7 +148,7 @@ export default function RegisterPage() {
                 <option value="buyer">🛒 Buyer</option>
                 <option value="farmer">🌾 Farmer</option>
               </select>
-              <span className="absolute right-3 top-3 text-green-500 pointer-events-none">▼</span>
+              <span className="absolute right-3 top-3 text-green-500 pointer-events-none"></span>
             </div>
           </div>
         </div>
