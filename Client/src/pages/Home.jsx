@@ -15,7 +15,7 @@ export default function Home() {
           backgroundPosition: "center",
         }}
       >
-        {/* Dark green gradient overlay with radial vignette */}
+        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-green-900/80 via-green-800/60 to-green-900/90 pointer-events-none"></div>
         <div
           className="absolute inset-0 pointer-events-none"
@@ -29,9 +29,12 @@ export default function Home() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-lg animate-fadeInUp">
             Middleman-Free Mandi Platform
           </h1>
-          <p className="mt-3 text-base sm:text-lg text-green-100 max-w-none animate-fadeInUp delay-150">
-           Connecting farmers directly to buyers — hotels, processors, exporters — for fair prices, no middlemen, and transparent bulk crop deals.
-Empowering farmers with technology to ensure transparency, timely payments, and access to a wider market. Experience hassle-free crop selling with real-time deal tracking and trusted logistics support — all designed to maximize your income and strengthen agricultural communities.
+          <p className="mt-3 text-base sm:text-lg text-green-100 animate-fadeInUp delay-150">
+            Connecting farmers directly to buyers — hotels, processors, exporters — for fair
+            prices, no middlemen, and transparent bulk crop deals. Empowering farmers with
+            technology to ensure transparency, timely payments, and access to a wider market.
+            Experience hassle-free crop selling with real-time deal tracking and trusted logistics
+            support — all designed to maximize your income and strengthen agricultural communities.
           </p>
           <div className="mt-8 flex justify-center gap-6 flex-wrap animate-fadeInUp delay-300">
             <Link
@@ -139,26 +142,30 @@ Empowering farmers with technology to ensure transparency, timely payments, and 
   );
 }
 
+/* Feature Card */
 function FeatureCard({ icon, title, desc, bg }) {
   return (
     <div
-      className={relative bg-gradient-to-br ${bg} rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 overflow-hidden}
+      className={`relative bg-gradient-to-br ${bg} rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 overflow-hidden`}
     >
       {/* Folded corner */}
       <div className="absolute top-0 right-0 w-10 h-10 bg-white bg-opacity-30 backdrop-blur-sm clip-corner"></div>
       <div className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-t-transparent border-l-[40px] border-l-white border-opacity-50"></div>
 
-      <div className="flex justify-center mb-4 transition-transform duration-300 hover:scale-125">{icon}</div>
+      <div className="flex justify-center mb-4 transition-transform duration-300 hover:scale-125">
+        {icon}
+      </div>
       <h3 className="text-lg font-bold text-gray-800">{title}</h3>
       <p className="mt-2 text-gray-700">{desc}</p>
     </div>
   );
 }
 
+/* Step Card */
 function StepCard({ step, title, desc, color }) {
   return (
     <div
-      className={relative bg-gradient-to-br ${color} rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 overflow-hidden}
+      className={`relative bg-gradient-to-br ${color} rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 overflow-hidden`}
     >
       {/* Folded corner */}
       <div className="absolute top-0 right-0 w-10 h-10 bg-white bg-opacity-30 backdrop-blur-sm clip-corner"></div>
