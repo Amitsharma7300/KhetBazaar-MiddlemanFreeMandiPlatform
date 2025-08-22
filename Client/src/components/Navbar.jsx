@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { FaBars, FaTimes } from "react-icons/fa";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
@@ -10,15 +10,15 @@ export default function Navbar() {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <nav className="bg-white shadow-md px-6 py-3 flex items-center justify-between border-b border-green-200">
+    <nav className="bg-gradient-to-r from-green-50 via-yellow-50 to-purple-100 shadow-lg px-6 py-2 flex items-center justify-between border-b border-green-200 rounded-b-2xl">
       {/* Logo */}
-      <NavLink to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-        <span className="text-3xl">🌾</span>
-        <h1 className="font-bold text-2xl text-green-800">KhetBazaar</h1>
+      <NavLink to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
+        <span className="text-3xl drop-shadow">🌾</span>
+        <h1 className="font-extrabold text-2xl text-green-800 tracking-wide drop-shadow-lg">KhetBazaar</h1>
       </NavLink>
 
       {/* Desktop Links */}
-      <div className="hidden md:flex items-center gap-6">
+      <div className="hidden md:flex items-center gap-3">
         <NavLinks user={user} logout={logout} closeMenu={closeMenu} />
       </div>
 
@@ -26,7 +26,7 @@ export default function Navbar() {
       <div className="md:hidden">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="text-green-800 text-2xl focus:outline-none"
+          className="text-green-800 text-2xl focus:outline-none transition-transform hover:scale-110"
         >
           {isMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
@@ -42,11 +42,11 @@ export default function Navbar() {
 
       {/* Mobile Slide Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-64 bg-gradient-to-br from-green-50 via-yellow-50 to-purple-100 shadow-2xl z-50 transform transition-transform duration-300 rounded-l-2xl ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex flex-col p-6 gap-6">
+        <div className="flex flex-col p-6 gap-3">
           <NavLinks user={user} logout={logout} closeMenu={closeMenu} />
         </div>
       </div>
@@ -56,16 +56,18 @@ export default function Navbar() {
 
 function NavLinks({ user, logout, closeMenu }) {
   const linkStyle = ({ isActive }) =>
-    `font-medium transition-colors duration-200 ${
-      isActive ? "text-green-600 border-b-2 border-green-600" : "text-green-800 hover:text-green-600"
+    `font-semibold transition-colors duration-200 px-2 py-1 rounded-lg ${
+      isActive
+        ? "text-green-700 bg-green-100 shadow"
+        : "text-green-800 hover:text-green-700 hover:bg-green-50"
     }`;
 
   const btnLogin =
-    "bg-green-600 text-white font-medium px-4 py-1 rounded hover:bg-green-700 transition-colors";
+    "bg-green-600 text-white font-semibold px-4 py-1 rounded-lg shadow hover:bg-green-700 transition-colors";
   const btnRegister =
-    "bg-green-100 text-green-800 font-medium px-4 py-1 rounded border border-green-300 hover:bg-green-200 transition-colors";
+    "bg-green-100 text-green-800 font-semibold px-4 py-1 rounded-lg border border-green-300 hover:bg-green-200 transition-colors";
   const btnLogout =
-    "bg-red-100 text-red-600 font-medium px-4 py-1 rounded hover:bg-red-200 transition-colors";
+    "bg-red-100 text-red-600 font-semibold px-4 py-1 rounded-lg hover:bg-red-200 transition-colors";
 
   return (
     <>
@@ -78,7 +80,6 @@ function NavLinks({ user, logout, closeMenu }) {
       <NavLink to="/contact" className={linkStyle} onClick={closeMenu}>
         Contact
       </NavLink>
-      {/* ✅ New Blogs link */}
       <NavLink to="/blogs" className={linkStyle} onClick={closeMenu}>
         Blogs
       </NavLink>
