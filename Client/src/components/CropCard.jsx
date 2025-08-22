@@ -201,16 +201,18 @@ export default function CropCard({ crop, dashboardType, isBuyer, onBidAction }) 
       {crop.logistics && (
         <div className="mt-4 bg-blue-50 p-3 rounded">
           <h3 className="font-semibold mb-2">Logistics Details:</h3>
-          <div><b>Status:</b> {crop.logistics.status}</div>
-          <div><b>Pickup Location:</b> {crop.logistics.pickupLocation}</div>
-          <div><b>Delivery Location:</b> {crop.logistics.deliveryLocation}</div>
-          <div>
-            <b>Expected Delivery Date:</b>{" "}
-            {crop.logistics.expectedDate && new Date(crop.logistics.expectedDate).toLocaleString()}
-          </div>
-          <div><b>Payment Mode:</b> {crop.logistics.paymentMode}</div>
-          <div><b>Buyer Name:</b> {crop.logistics.name}</div>
-          <div><b>Buyer Mobile:</b> {crop.logistics.mobile}</div>
+          {crop.logistics.status && <div><b>Status:</b> {crop.logistics.status}</div>}
+          {crop.logistics.pickupLocation && <div><b>Pickup Location:</b> {crop.logistics.pickupLocation}</div>}
+          {crop.logistics.deliveryLocation && <div><b>Delivery Location:</b> {crop.logistics.deliveryLocation}</div>}
+          {crop.logistics.expectedDate && (
+            <div>
+              <b>Expected Delivery Date:</b> {new Date(crop.logistics.expectedDate).toLocaleString()}
+            </div>
+          )}
+          {crop.logistics.paymentMode && <div><b>Payment Mode:</b> {crop.logistics.paymentMode}</div>}
+          {crop.logistics.name && <div><b>Buyer Name:</b> {crop.logistics.name}</div>}
+          {crop.logistics.mobile && <div><b>Buyer Mobile:</b> {crop.logistics.mobile}</div>}
+          {/* Add more fields as needed, only if present */}
         </div>
       )}
 
