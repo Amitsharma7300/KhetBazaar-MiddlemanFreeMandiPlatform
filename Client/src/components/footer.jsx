@@ -96,7 +96,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Footer */}
-        <div className="text-center text-xs text-green-700 mt-4 border-t border-green-300 pt-2 tracking-wide font-semibold drop-shadow">
+        <div className="text-center text-xs text-green-700 mt-8 border-t border-green-300 pt-4 tracking-wide font-semibold drop-shadow-sm">
           &copy; {new Date().getFullYear()} <span className="font-extrabold">MandiConnect</span>. All rights reserved.
         </div>
       </div>
