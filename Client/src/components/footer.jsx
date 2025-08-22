@@ -88,7 +88,7 @@ const Footer = () => {
 
         {/* Bottom Footer */}
         <div className="text-center text-xs text-green-700 mt-8 border-t border-green-300 pt-4 tracking-wide font-semibold drop-shadow-sm">
-          &copy; {new Date().getFullYear()} <span className="font-extrabold">MandiConnect</span>. All rights reserved.
+          &copy; {new Date().getFullYear()} <span className="font-extrabold">KhetBazaar</span>. All rights reserved.
         </div>
       </div>
     </footer>
