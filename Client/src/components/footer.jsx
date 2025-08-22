@@ -2,30 +2,29 @@ import { FaFacebookF, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa"
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-green-400 via-yellow-100 to-purple-200 text-green-900 shadow-2xl font-sans relative">
-      <div className="max-w-7xl mx-auto px-4 py-5">
+    <footer className="bg-gradient-to-r from-green-300 via-green-200 to-green-100 text-green-900 shadow-lg font-sans">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-lg p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           
           {/* Brand Info */}
           <div>
-            <h2 className="text-2xl font-extrabold mb-2 text-green-800 tracking-wide drop-shadow-lg">
+            <h2 className="text-3xl font-extrabold mb-3 text-green-800 tracking-wide drop-shadow-md">
               KhetBazaar
             </h2>
-            <p className="text-xs text-green-700 leading-relaxed tracking-wide">
+            <p className="text-sm text-green-700 leading-relaxed tracking-wide">
               Empowering farmers and buyers through a transparent,{" "}
               <span className="font-semibold text-green-900">middleman-free</span>{" "}
-              mandi system. <br />
-              <span className="text-green-800 font-bold">Join us in revolutionizing agriculture!</span>
+              mandi system. Join us in revolutionizing agriculture with fair prices and direct deals.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-bold mb-2 text-green-800 tracking-wider uppercase text-base drop-shadow">
+            <h3 className="font-bold mb-3 text-green-800 tracking-wider uppercase text-lg drop-shadow-sm">
               Quick Links
             </h3>
-            <ul className="space-y-1 text-xs">
+            <ul className="space-y-2 text-sm">
               {[
                 { name: "Home", href: "/" },
                 { name: "About Us", href: "/about" },
@@ -35,7 +34,7 @@ const Footer = () => {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="block px-2 py-1 rounded transition-all duration-300 hover:bg-green-500 hover:text-white hover:shadow-lg font-medium tracking-wide"
+                    className="block px-2 py-1 rounded transition-all duration-300 hover:bg-green-500 hover:text-white hover:shadow-md font-medium tracking-wide"
                   >
                     {link.name}
                   </a>
@@ -46,10 +45,10 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-bold mb-2 text-green-800 tracking-wider uppercase text-base drop-shadow">
+            <h3 className="font-bold mb-3 text-green-800 tracking-wider uppercase text-lg drop-shadow-sm">
               Contact Info
             </h3>
-            <ul className="text-xs space-y-1 text-green-700 tracking-wide">
+            <ul className="text-sm space-y-2 text-green-700 tracking-wide">
               <li>
                 <span className="font-semibold">Email:</span> support@mandifree.com
               </li>
@@ -60,17 +59,14 @@ const Footer = () => {
                 <span className="font-semibold">Location:</span> Bharat, India
               </li>
             </ul>
-            <div className="mt-2 border-t border-green-300 pt-2">
-              <span className="text-xs text-green-800 font-semibold">Open: Mon-Sat 9am-6pm</span>
-            </div>
           </div>
 
           {/* Social Links */}
           <div>
-            <h3 className="font-bold mb-2 text-green-800 tracking-wider uppercase text-base drop-shadow">
+            <h3 className="font-bold mb-3 text-green-800 tracking-wider uppercase text-lg drop-shadow-sm">
               Follow Us
             </h3>
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               {[
                 { icon: <FaFacebookF />, link: "https://www.facebook.com/" },
                 { icon: <FaInstagram />, link: "https://www.instagram.com/" },
@@ -80,17 +76,12 @@ const Footer = () => {
                 <a
                   key={idx}
                   href={social.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white/80 p-2 rounded-full shadow-md transition-all duration-300 hover:bg-green-600 hover:text-white hover:shadow-xl transform hover:scale-110"
+                  className="bg-white p-3 rounded-full shadow-md transition-all duration-300 hover:bg-green-600 hover:text-white hover:shadow-lg transform hover:scale-110"
                   aria-label={`Follow us on ${social.link.split('//')[1].split('.')[0]}`}
                 >
-                  <span className="transition-transform duration-300 group-hover:scale-125">{social.icon}</span>
+                  {social.icon}
                 </a>
               ))}
-            </div>
-            <div className="mt-3 text-xs text-green-700 font-semibold">
-              <span className="inline-block bg-green-100 px-2 py-1 rounded-full shadow">#MandiRevolution</span>
             </div>
           </div>
         </div>
@@ -105,3 +96,4 @@ const Footer = () => {
 };
 
 export default Footer;
+98c2e4c187df51e6b3d07zzz
