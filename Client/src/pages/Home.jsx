@@ -123,17 +123,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="bg-green-200 py-8 px-6 flex flex-col items-center text-center text-green-900 rounded-xl shadow-inner max-w-7xl mx-auto mt-6 mb-6">
-        <h2 className="text-3xl md:text-4xl font-extrabold drop-shadow-sm max-w-3xl">
+      {/* Call to Action - moved to bottom */}
+      <section className="bg-gradient-to-r from-green-200 via-yellow-100 to-purple-100 py-8 px-6  flex flex-col items-center text-center text-green-900 rounded-xl shadow-inner max-w-7xl mx-auto mt-5 mb-5 border border-green-300">
+        <h2 className="text-3xl md:text-4xl font-extrabold drop-shadow-sm max-w-3xl mb-2">
           Join the Mandi Revolution Today
         </h2>
-        <p className="mt-4 text-lg max-w-2xl text-green-900/90">
+        <p className="mt-2 text-lg max-w-2xl text-green-900/90">
           Empower farmers. Get fair prices. Make agriculture sustainable.
         </p>
         <Link
           to="/register"
-          className="mt-8 inline-block bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white font-semibold px-8 py-3 rounded-full shadow-md transition-transform duration-300 hover:scale-105"
+          className="mt-6 inline-block bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white font-semibold px-8 py-3 rounded-full shadow-md transition-transform duration-300 hover:scale-105"
         >
           Register Now
         </Link>
