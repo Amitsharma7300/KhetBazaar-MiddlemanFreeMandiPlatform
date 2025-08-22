@@ -3,6 +3,7 @@ import { FaHandshake, FaSearchDollar } from "react-icons/fa";
 import { GiPriceTag } from "react-icons/gi";
 import api from "../api/axios";
 import CropCard from "../components/CropCard";
+import LogisticsForm from "../components/LogisticsForm";
 import { useAuth } from "../context/AuthContext";
 import AIMatching from "./AIMatching";
 import ContractOffers from "./ContractOffers";
@@ -23,6 +24,10 @@ export default function BuyerDashboard() {
 
     fetchCrops();
   }, [token]);
+
+  // Example: acceptedBids is an array of bids with accepted status
+  // Each bid should have crop and logistics info
+  const acceptedBids = []; // Replace with actual data
 
   return (
     <div className="p-4 md:p-8 min-h-screen bg-gradient-to-br from-blue-100 via-green-50 to-yellow-100">
@@ -58,6 +63,41 @@ export default function BuyerDashboard() {
             isBuyer={true}
           />
         ))}
+      </div>
+
+      {/* Logistics Dashboard for accepted bids */}
+      <div className="mt-10">
+        <h2 className="text-2xl font-bold mb-4 text-blue-700">Logistics Dashboard</h2>
+        {acceptedBids && acceptedBids.length > 0 ? (
+          acceptedBids.map((bid) => (
+            <div key={bid._id} className="mb-8">
+              <div className="bg-white rounded-xl shadow p-4 mb-2">
+                <h3 className="text-lg font-semibold text-green-700 mb-2">
+                  Crop: {bid.crop.cropName}
+                </h3>
+                <div>Quantity: {bid.crop.quantityInQuintals} Quintals</div>
+                <div>Farmer: {bid.crop.farmer?.name}</div>
+              </div>
+              {/* Show logistics details if present */}
+              {bid.logistics ? (
+                <div className="bg-blue-50 p-4 rounded shadow">
+                  <h4 className="font-bold mb-2">Logistics Details</h4>
+                  <div><b>Name:</b> {bid.logistics.name}</div>
+                  <div><b>Mobile:</b> {bid.logistics.mobile}</div>
+                  <div><b>Pickup Location:</b> {bid.logistics.pickupLocation}</div>
+                  <div><b>Delivery Location:</b> {bid.logistics.deliveryLocation}</div>
+                  <div><b>Expected Date:</b> {bid.logistics.expectedDate && new Date(bid.logistics.expectedDate).toLocaleDateString()}</div>
+                  <div><b>Payment Mode:</b> {bid.logistics.paymentMode}</div>
+                </div>
+              ) : (
+                // If logistics not filled, show form to fill
+                <LogisticsForm crop={bid.crop} bid={bid} />
+              )}
+            </div>
+          ))
+        ) : (
+          <div className="text-gray-500">No accepted bids yet.</div>
+        )}
       </div>
     </div>
   );
