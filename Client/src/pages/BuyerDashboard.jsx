@@ -3,11 +3,11 @@ import { FaHandshake, FaSearchDollar } from "react-icons/fa";
 import { GiPriceTag } from "react-icons/gi";
 import api from "../api/axios";
 import CropCard from "../components/CropCard";
-import LogisticsForm from "../components/LogisticsForm";
 import { useAuth } from "../context/AuthContext";
 import AIMatching from "./AIMatching";
 import ContractOffers from "./ContractOffers";
 import PricePrediction from "./PricePrediction";
+import LogisticsForm from "../components/LogisticsForm";
 
 export default function BuyerDashboard() {
   const [crops, setCrops] = useState([]);
