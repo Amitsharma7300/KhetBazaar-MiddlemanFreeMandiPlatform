@@ -91,7 +91,9 @@ const Footer = () => {
             </div>
             <div className="mt-3 text-xs text-green-700 font-semibold">
               <span className="inline-block bg-green-100 px-2 py-1 rounded-full shadow">#MandiRevolution</span
-              <span className="inline-block bg-green-100 px-2 py-1 rounded-full shadow">#MandiFree</span>
+            </div>
+            <div className="mt-3 text-xs text-green-700 font-semibold">
+              <span className="inline-block bg-green-100 px-2 py-1 rounded-full shadow">#MandiFree</span
             </div>
           </div>
         </div>
