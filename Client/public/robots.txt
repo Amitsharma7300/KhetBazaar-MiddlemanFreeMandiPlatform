@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mandimukt.vercel.app//sitemap.xml |https://Khetbazaar.vercel.app//sitemap.xml
