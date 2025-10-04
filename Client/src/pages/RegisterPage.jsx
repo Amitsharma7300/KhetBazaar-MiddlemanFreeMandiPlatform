@@ -33,53 +33,97 @@ export default function RegisterPage() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     if (name === "aadhaar") {
       const cleaned = value.replace(/\D/g, "");
       if (cleaned.length <= 12) setForm({ ...form, aadhaar: cleaned });
       return;
     }
+
     if (name === "mobile") {
       const cleaned = value.replace(/\D/g, "");
       if (cleaned.length <= 10) setForm({ ...form, mobile: cleaned });
       return;
     }
+
     if (name === "pan") {
       const upper = value.toUpperCase();
       if (upper.length <= 10) setForm({ ...form, pan: upper });
       return;
     }
+
     setForm({ ...form, [name]: value });
   };
 
+  // Send OTP to email
   const handleSendOtp = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
+
+    // Check for empty required fields
+    const requiredFields = ["name", "mobile", "aadhaar", "pan", "address", "email", "password"];
+    for (let field of requiredFields) {
+      if (!form[field] || form[field].trim() === "") {
+        setError(`Please fill in ${field}`);
+        setLoading(false);
+        return;
+      }
+    }
+
     try {
-      await api.post("/api/auth/register", form);
+      await api.post(
+        "/api/auth/register",
+        {
+          ...form,
+          mobile: form.mobile.toString(),
+          aadhaar: form.aadhaar.toString(),
+          pan: form.pan.toUpperCase(),
+          role: form.role,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
       setOtpSent(true);
     } catch (err) {
-      setError(err.response?.data?.message || "Registration failed");
+      console.error(err);
+      setError(err.response?.data?.message || "Registration failed. Please try again.");
     }
+
     setLoading(false);
   };
 
+  // Verify OTP
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
+
+    if (!otp || otp.length !== 6) {
+      setError("Please enter a valid 6-digit OTP");
+      setLoading(false);
+      return;
+    }
+
     try {
-      const res = await api.post("/api/auth/verify-otp", {
-        email: form.email,
-        otp,
-      });
+      const res = await api.post(
+        "/api/auth/verify-otp",
+        { email: form.email, otp },
+        { headers: { "Content-Type": "application/json" } }
+      );
+
       login(res.data.user, res.data.token);
       navigate(`/${res.data.user.role}`);
     } catch (err) {
+      console.error(err);
       setError(err.response?.data?.message || "Invalid OTP");
     }
+
     setLoading(false);
   };
 
@@ -148,7 +192,6 @@ export default function RegisterPage() {
                 <option value="buyer">🛒 Buyer</option>
                 <option value="farmer">🌾 Farmer</option>
               </select>
-              <span className="absolute right-3 top-3 text-green-500 pointer-events-none"></span>
             </div>
           </div>
         </div>
@@ -219,5 +262,4 @@ function ErrorMsg({ message }) {
       {message}
     </div>
   );
-    }
-            
+}
